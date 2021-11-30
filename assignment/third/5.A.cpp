@@ -32,7 +32,7 @@ int main()
        }
        }
        sum=(year-1980)*365+count+count1*31+count2*30+a+day;
-       printf("%d",sum%7+1);
+       printf("%d",sum);
     }
     else
         printf("输入有误");

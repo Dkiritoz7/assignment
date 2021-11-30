@@ -1,25 +1,36 @@
-#include <cstdio>
-using namespace std;
-
-const int MODD = 998244353;
-int a, b;
-
-long long fast_pow(int a, int b) { // return a^b % MODD
-    long long ans = 1;
-    long long tem = a;
-    while(b) {
-        if(b & 1) {
-            ans *= tem;
-            ans %= MODD;
-        }
-        b >>= 1;
-        tem *= tem;
-        tem %= MODD;
+   cout<<"Celsius temperatures of Fahrenheit equivalents:"<<endl;
+    for(int i=1;i<=4;i++)
+    {
+        cout<<"Fahrenheit equivalents"<<"\t";
     }
-    return ans;
-}
-int main(){
-    scanf("%d%d", &a, &b);
-    printf("%lld", fast_pow(a, fast_pow(a, b)));
+    cout<<endl;
+    for(int j=32;j<=77;j++)
+    {
+        cout<<"      "<<j;
+        cout<<"         "<<transform2(j);
+        cout<<"           "<<j+25;
+        cout<<"         "<<transform2(j+45);
+        cout<<"           "<<j+50;
+        cout<<"        "<<transform2(j+50);
+        cout<<"           "<<j+75;
+        cout<<"        "<<transform2(j+75);
+        cout<<endl;
+        if(j>=9)
+        {
+          for(int z=10;z<=24;z++)
+          {
+            cout<<"     "<<z;
+            cout<<"         "<<transform2(z);
+            cout<<"           "<<z+25;
+            if(z+25>=38) cout<<"        "<<transform2(z+25);
+            else cout<<"         "<<transform2(z+25);
+            cout<<"           "<<z+50;
+            cout<<"        "<<transform2(z+50);
+             cout<<"           "<<z+75;
+            cout<<"        "<<transform2(z+75);
+            cout<<endl;
+          }
+        }
+       
+    }
     return 0;
-}
