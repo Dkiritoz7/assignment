@@ -12,7 +12,8 @@
         "initializer_list": "cpp",
         "regex": "cpp",
         "utility": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

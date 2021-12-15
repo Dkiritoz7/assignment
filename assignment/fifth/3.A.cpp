@@ -16,9 +16,9 @@ class Date
           int get1() {return year;}
           int get2() {return month;}
           int get3() {return day;}
-         bool isWeekend()
+         bool isWeekend()                            //判断日期是否符合规定
          {
-            if((year%4==0&&year%100!=0)||(year%400==0))
+            if((year%4==0&&year%100!=0)||(year%400==0))      //闰年判断
             {
                 if(month==2) 
                 {
@@ -26,26 +26,28 @@ class Date
                     else return 0;
                 }
             }
-            if(day>31||day<=0) return 0;
-            if(month>12||month<=0) return 0;
-            if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+            if(day>31||day<=0) return 0;              //日期最简单的不符合条件情况
+            if(month>12||month<=0) return 0;           //同上面日期判断
+            if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)  //判断31天情况
             {
                 if(day<=31&&day>=1) return 1;
                 else return 0;
             }
-            if(month==4||month==6||month==9||month==11)
+            if(month==4||month==6||month==9||month==11) //判断30天情况
+            {
             {
                 if(day<=30&&day>=1) return 1;
                 else return 0;
             }
-            if(month==2)
+            if(month==2)                  //判断非闰年的二月情况
             {
                 if(day<=28&&day>=1) return 1;
                 else return 0;
             }
-            return 1;
          }
-         int sub(Date d)
+         return 1;
+         }
+         int sub(Date d)                //思路 若求1989.10.25 和2019.5.3 日期差 分为俩部分 1989.10.25--1919.1.1和1919.1.1--2019.5.3
          {
            int sum=0;
              if(year!=d.year)
@@ -72,9 +74,9 @@ class Date
                    largerDay=day;
                    smallerDay=d.day;
                }
-               for(int i=smallerYear+1;i<largerYear;i++)
+               for(int i=smallerYear+1;i<largerYear;i++)    //第二部分求日期差
               {
-                if((i%4==0&&i%100!=0)||(i%400==0))
+                if((i%4==0&&i%100!=0)||(i%400==0))           
                   count++;
               }
                    for(int j=1;j<largerMonth;j++)  
@@ -91,7 +93,7 @@ class Date
                          a=28;
                       }
                   }
-                  for(int j=12;j>smallerMonth;j--)  
+                  for(int j=12;j>smallerMonth;j--)           //第一部分求日期差
                  {
                      if(j==1||j==3||j==5||j==7||j==8||j==10||j==12)
                         count1++;
@@ -115,7 +117,7 @@ class Date
                   }
                   sum=(largerYear-smallerYear-1)*365+count+count1*31+count2*30+a+largerDay+minus+b-smallerDay;
                 }
-                if(year==d.year)
+                if(year==d.year)       //年相同情况
                 {
                   int count1=0,count2=0,a=0,minus=0;
                   int smallerMonth,smallerDay;
@@ -161,7 +163,7 @@ class Date
                   sum=count1*31+count2*30+largerDay+minus-smallerDay+a;
                 }
                 }
-                if(year==d.year&&month==d.month)
+                if(year==d.year&&month==d.month)     //年月都相同情况
                 {
                     if(day>d.day) sum=day-d.day;
                     if(day<d.day) sum=d.day-day;
@@ -184,7 +186,7 @@ class Time
       int get1() {return hour;}
       int get2() {return minute;}
       int get3() {return second;}
-      int sub(Time t)
+      int sub(Time t)      //思路与求日期相同
       {
         int sum=0;
         int largerHour,largerMinute,largerSecond;
@@ -213,7 +215,7 @@ class Time
          count=largerHour-smallerHour-1;
          sum=count*60*60+largerMinute*60+largerSecond+(60-smallerMinute-1)*60+60-smallerSecond;
         }
-       if(hour==t.hour)
+       if(hour!=t.hour)
        {
          if(minute>t.minute)
          {
@@ -241,7 +243,7 @@ class Time
       }
 };
 template <class T>
-bool compare(T t1,T t2)
+bool compare(T t1,T t2)        //比较的函数 因为上面sub求得是绝对值 想办法把三部分得数字分开 比较大小作判断 所以用到了get函数
 {
   int first1,second1,third1;
   int first2,second2,third2;
@@ -269,11 +271,12 @@ bool compare(T t1,T t2)
       if(third1>=third2) return 0;
     }
   }
+  return 0;
 }
 int main()
 {
     Date d1,d2;
-    d1.setDate(2019,3,1);
+    d1.setDate(2008,3,1);
     d2.setDate(2019,3,28);
     cout<<d1.isWeekend()<<endl;
     cout<<d1.sub(d2)<<endl;
@@ -287,3 +290,6 @@ int main()
     };
     return 0;
 }
+
+////问题与思考：前面做的题是从一年得1.1开始求日期差 但这个题不一样 所以想办法把他和前面题关联起来 分为俩部分求和
+/////////////明白了考虑问题要全面细致，同时对类中得函数得使用有了更深理解，

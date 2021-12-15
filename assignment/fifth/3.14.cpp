@@ -40,5 +40,11 @@ int main()
     e2.setName2(c);
     e2.setIncome(900000);
     cout<<12*e1.getIncome()<<endl<<12*e2.getIncome()<<endl;
+    e1.setIncome(99000);
+    e2.setIncome(990000);
+    cout<<12*e1.getIncome()<<endl<<12*e2.getIncome()<<endl;
     return 0;
 }
+
+
+////思考与问题：定义字符串用string，并且对类中的get set 有了更深理解。
