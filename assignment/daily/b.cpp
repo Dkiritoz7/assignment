@@ -1,31 +1,47 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-
+class number;
+class number
+{
+    private:
+       int realNumber,imaginaryNumber;
+    public:
+      void setrealNumber(int a)
+       {
+           realNumber=a;
+       }
+       void setimaginaryNumber(int b)
+       {
+          imaginaryNumber=b;
+       }
+      int getrealnumber() {
+        return  realNumber;
+      }
+      int getimaginaryNumber() {
+          return imaginaryNumber;
+      }
+      int mod(int realNumber,int imaginaryNumber)
+      {
+          int final;
+          final=realNumber*realNumber+imaginaryNumber*imaginaryNumber;
+          return final;
+      }
+      void printf(int realNumber,int imaginaryNumber)
+      {
+          cout<<realNumber<<"+"<<imaginaryNumber<<"i";
+      }
+};
 int main()
 {
-    int x=5;
-    int j=1;
-    int sum=0;
-    int a[10000];
-    int counter;
-    for(int i=1;i<x;i++)
-    {
-	   for(counter=1;counter<i;counter++)
-		{
-        if(i%counter==0) 
-           {
-            a[j]=counter;
-            j++;
-           }
-		if(counter==i-1)
-		  {
-		    for(int z=1;z<=j-1;z++)
-            {
-                sum=sum+a[z];
-            }
-		     if(sum==i) cout<<"yes";
-		  }
-        }
-    }
+    int x,y;
+    srand(time(0));
+    x=rand()%9+1;
+    y=rand()%9+1;
+    cout<<x<<y<<endl;
+    number n1;
+    n1.setrealNumber(x);
+    n1.setimaginaryNumber(y);
+    cout<<n1.mod(x,y);
+    n1.printf(x,y);
+    return 0;
 }

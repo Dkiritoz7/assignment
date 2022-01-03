@@ -17,22 +17,19 @@ void function1(int a[],int size)
     }
     }
 }
-void function2(int a[],int size)
+void function2(int a[],int size,int k)
 {
-    for(int i=0;i<=size-1;i++)
-    {
-        for(int j=i+1;j<=size-1;j++)
+        for(int j=k+1;j<=size-1;j++)
         {
-            int min=a[i];
-            int counter=i;
+            int min=a[k];
+            int counter=k;
             if(a[j]<min)
             {
                counter=j;
             }
-            swap(a[i],a[counter]);
+            swap(a[k],a[counter]);
         }
-    }
-    if(size-1>=1) return function2(a,size-1);   ///递归实现，return
+    if(k<=size-1) return function2(a,size,k+1);   ///递归实现，return k+1
 }
 void swap1(int &a ,int &b)
 {
@@ -79,7 +76,7 @@ int main()
     int e[5]={5,7,8,6,6};
     function4(b,7,0);
     function1(c,6);
-    function2(d,8);
+    function2(d,8,0);
     function3(e,5);
     for(int i=0;i<=6;i++)
     {

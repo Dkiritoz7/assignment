@@ -1,25 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+int max(int *a,int score[][4],int row)
+{
+    int maxNumber=0;
+    for(int i=0;i<row;i++)
+    {
+        a=&score[i][0];
+        for(int j=0;j<=3;j++)
+        {
+            if(maxNumber<=*a) maxNumber=*a;
+            a++;
+        }
+    }
+    return maxNumber;
+}
 int main()
 {
-    int flag[256]={0};
-    char str[100];
-    char str1[100]={0};
-    char a[100]={0};
-    cin.getline(str,99);
-    cin.getline(str1,99);
-    int j=0;
-    for(int i=0;str[i]!=0;i++)
-    {
-        if(flag[str[i]]==0) a[j++]=str[i];
-        flag[str[i]]=1;
-    }
-    for(int i=0;str1[i]!=0;i++)
-    {
-        if(flag[str1[i]]==0) a[j++]=str1[i];
-        flag[str1[i]]=1;
-    }
-    cout<<a;
-    return 0;
+    int *a=NULL;
+    int score[3][4]={1,2,3,4,5,6,7,888,9,10,11,12};
+    cout<<max(a,score,3);
 }
